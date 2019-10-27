@@ -40,7 +40,6 @@ select {
   font-size: 12px;
 }
 
-
 button {
   cursor: pointer;
 }
@@ -61,6 +60,10 @@ button {
 
 h2 {
   margin: 0px
+}
+
+h3 {
+  margin-top: 0px;
 }
 
 .add-button img {
