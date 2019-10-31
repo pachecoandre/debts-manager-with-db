@@ -26,11 +26,12 @@ export default class DebtsPage extends Component {
    }
 
    async getCustomers() {
-      const response = await this.service.getUsers()
-      let names = []
-      for (let i = 0; i < response.data.length; i++) {
-         names.push(response.data[i].name)
-      }
+      // const response = await this.service.getUsers()
+      // let names = []
+      // for (let i = 0; i < response.data.length; i++) {
+      //    names.push(response.data[i].name)
+      // }
+      const names = await this.service.getSwapiUsers()
       this.setState(() => ({ customers: names }))
    }
 

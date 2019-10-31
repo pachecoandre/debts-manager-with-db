@@ -65,7 +65,6 @@ export default class CustomersService {
             nextPage = false
          }
       }
-      console.log(customers)
       return customers
    }
 }
