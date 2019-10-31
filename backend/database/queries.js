@@ -6,9 +6,9 @@ const getDebts = () => {
       .then(response => {
          return response
       },
-      err => {
-         return false
-      })
+         err => {
+            return false
+         })
 }
 
 const getCustomerDebts = (customerName) => {
@@ -36,9 +36,9 @@ const createDebt = ({ customerName, description, amount }) => {
          })
 }
 
-const updateDebt = ({ id, customerName, description, amount} ) => {
+const updateDebt = ({ id, customerName, description, amount }) => {
    return knex('debts')
-      .where('id', '=', id)
+      .where('id', id)
       .update({
          id,
          customer_name: customerName,
@@ -49,9 +49,27 @@ const updateDebt = ({ id, customerName, description, amount} ) => {
       .then(
          response => {
             if (response === 0) {
-               return `Dívida não encontrada`   
+               return `Dívida não encontrada`
             }
             return `Dívida atualizada`
+         },
+         err => {
+            console.log(err)
+            return false
+         }
+      )
+}
+
+const deleteDebt = ({ id }) => {
+   return knex('debts')
+      .where('id', id)
+      .del()
+      .then(
+         response => {
+            if (response === 0) {
+               return `Dívida não encontrada`
+            }
+            return `Dívida deletada`
          },
          err => {
             console.log(err)
@@ -64,5 +82,6 @@ module.exports = {
    getDebts,
    getCustomerDebts,
    createDebt,
-   updateDebt
+   updateDebt,
+   deleteDebt
 }

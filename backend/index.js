@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { getDebts, getCustomerDebts, createDebt, updateDebt } = require('./database/queries')
+const { getDebts, getCustomerDebts, createDebt, updateDebt, deleteDebt } = require('./database/queries')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
@@ -39,10 +39,18 @@ app.post('/debts', async (req, res) => {
    }
 })
 
-app.patch('/debts', async (req, res) => {
+app.post('/updateDebt', async (req, res) => {
    const updated = await updateDebt(req.body)
    if (updated) {
       return res.send(updated)
+   }
+   res.status(400)
+})
+
+app.post('/deleteDebt', async (req, res) => {
+   const deleted = await deleteDebt(req.body)
+   if (deleted) {
+      return res.send(deleted)
    }
    res.status(400)
 })
