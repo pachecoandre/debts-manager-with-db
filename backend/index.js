@@ -4,6 +4,11 @@ const { getDebts, getCustomerDebts, createDebt, updateDebt } = require('./databa
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
+app.use((req, res, next) => {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   next();
+ });
 
 app.get('/customers', (req, res) => {
    res.send('get swapi customers')
@@ -42,4 +47,4 @@ app.patch('/debts', async (req, res) => {
    res.status(400)
 })
 
-app.listen(3000, () => console.log('Server running on port 3000'))
+app.listen(3001, () => console.log('Server running on port 3001'))

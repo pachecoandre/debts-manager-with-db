@@ -48,7 +48,9 @@ const updateDebt = ({ id, customerName, description, amount} ) => {
       })
       .then(
          response => {
-            console.log(`Dívida id ${id} de ${customerName} atualizada`)
+            if (response === 0) {
+               return `Dívida não encontrada`   
+            }
             return `Dívida atualizada`
          },
          err => {
