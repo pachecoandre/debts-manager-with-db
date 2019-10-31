@@ -19,7 +19,7 @@ const EditModal = (props) => (
             <Dropdown
                customers={props.customers}
                inputName="customerName"
-               defaultValue={props.debtUnderEdition ? props.debtUnderEdition.name : ""} />
+               defaultValue={props.debtUnderEdition ? props.debtUnderEdition.customer_name : ""} />
             </div>
             <div className="label">
                Descrição
@@ -37,7 +37,7 @@ const EditModal = (props) => (
                name='value'
                placeholder='Valor'
                step="any"
-               defaultValue={props.debtUnderEdition ? props.debtUnderEdition.value : ""}
+               defaultValue={props.debtUnderEdition ? props.debtUnderEdition.amount : ""}
                required
             />
             </div>

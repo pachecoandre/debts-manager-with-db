@@ -8,7 +8,7 @@ Modal.setAppElement(document.getElementById('root'));
 const ListModal = (props) => {
 
    const filterDebts = (debts) => {
-      return props.debts.filter((item) => item.name === props.listingSomeonesDebts)
+      return props.debts.filter((item) => item.customer_name === props.listingSomeonesDebts)
    }
 
    return (
@@ -31,7 +31,7 @@ const ListModal = (props) => {
                   filterDebts().map((element, index) => (
                      <tr key={index}>
                         <td>{element.description}</td>
-                        <td className="num-column">{element.value}</td>
+                        <td className="num-column">{element.amount}</td>
                      </tr>
                   ))
                }

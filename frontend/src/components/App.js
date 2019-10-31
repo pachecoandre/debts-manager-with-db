@@ -22,6 +22,7 @@ export default class DebtsPage extends Component {
 
    componentDidMount() {
       this.getCustomers()
+      this.getDebts()
    }
 
    async getCustomers() {
@@ -33,10 +34,15 @@ export default class DebtsPage extends Component {
       this.setState(() => ({ customers: names }))
    }
 
-   handleDeleteDebt = (debtToRemove) => {
-      this.setState((prevState) => ({
-         debts: prevState.debts.filter((item) => item.id !== debtToRemove)
-      }))
+   async getDebts() {
+      const response = await this.service.getDebts()
+      this.setState(() => ({ debts: response.data }))
+   }
+
+   handleDeleteDebt = async (debtToRemove) => {
+      console.log(debtToRemove)
+      await this.service.deleteDebt(debtToRemove)
+      this.getDebts()
    }
 
    handleEditDebt = (debtToEdit) => {
@@ -45,25 +51,24 @@ export default class DebtsPage extends Component {
       })
    }
 
-   handleSaveChanges = (e) => {
-      e.preventDefault()
-      const customerName = e.target.elements.customerName.value
-      const description = e.target.elements.description.value.trim()
-      const value = e.target.elements.value.value
-      this.setState((prevState) => ({
-         debts: prevState.debts.map((item) => {
-            if (item.id === this.state.debtUnderEdition.id) {
-               item = { ...item, name: customerName, description, value }
-            }
-            return item
-         }),
-         debtUnderEdition: undefined
-      }))
-   }
-
    handleClearDebtUnderEdition = () => {
       this.setState(() => ({ debtUnderEdition: undefined }))
    }
+
+   handleSaveChanges = async (e) => {
+      e.preventDefault()
+      const debt = {
+         id: this.state.debtUnderEdition.id,
+         customerName: e.target.elements.customerName.value,
+         description: e.target.elements.description.value.trim(),
+         amount: e.target.elements.value.value
+      }
+
+      await this.service.updateDebt(debt)
+      this.setState(() => ({ debtUnderEdition: undefined }))
+      this.getDebts()
+   }
+
    handleListCustomerDebts = (customerName) => {
       this.setState(() => ({ listingSomeonesDebts: customerName }))
    }
@@ -72,24 +77,22 @@ export default class DebtsPage extends Component {
       this.setState(() => ({ listingSomeonesDebts: undefined }))
    }
 
-   handleNewDebt = (e) => {
+   handleNewDebt = async (e) => {
       e.preventDefault()
       const customerName = e.target.elements.customerName.value
       const description = e.target.elements.description.value.trim()
-      const value = e.target.elements.value.value
+      const amount = e.target.elements.value.value
       const debt = {
-         id: this.state.debts.length + 1,
-         name: customerName,
+         customerName,
          description,
-         value
+         amount
       }
-      this.setState((prevState) => ({
-         debts: prevState.debts.concat(debt)
-      }))
-
       // clear inputs
       e.target.elements.description.value = ''
       e.target.elements.value.value = ''
+
+      await this.service.createDebt(debt)
+      this.getDebts()
    }
 
    render() {

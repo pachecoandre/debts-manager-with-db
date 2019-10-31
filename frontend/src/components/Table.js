@@ -26,12 +26,12 @@ const Table = (props) => {
                      props.debts.map((item) => (
                         <tr key={item.id}>
                            <td>
-                              <button className="customer-button" onClick={(e) => props.handleListCustomerDebts(item.name)}>
-                                 {item.name}
+                              <button className="customer-button" onClick={(e) => props.handleListCustomerDebts(item.customer_name)}>
+                                 {item.customer_name}
                               </button>
                            </td>
                            <td className="desc-column">{item.description}</td>
-                           <td className="num-column">{item.value}</td>
+                           <td className="num-column">{item.amount}</td>
                            <td className="date-column">{moment().format('DD/MM/YYYY')}</td>
                            <td className="actions-column">
                               <button className='remove-button' onClick={(e) => {
@@ -39,13 +39,13 @@ const Table = (props) => {
                               }}
                               >
                                  remover
-                  </button>
+                              </button>
                               <button className='edit-button' onClick={(e) => {
                                  props.handleEditDebt(item)
                               }}
                               >
                                  editar
-                  </button>
+                              </button>
                            </td>
                         </tr>
                      ))
