@@ -5,6 +5,7 @@ import Table from './Table'
 import EditModal from './EditModal'
 import ListModal from './ListModal'
 import add from '../img/add.png'
+import loading from '../img/loading.gif'
 import './App.css'
 
 export default class DebtsPage extends Component {
@@ -104,7 +105,7 @@ export default class DebtsPage extends Component {
                <form onSubmit={this.handleNewDebt}>
                   <div className="input-bar">
                      <div className="label">
-                        Cliente
+                        Cliente <span>{this.state.customers.length === 0 ? <img src={loading} /> : ""}</span>
                         <Dropdown customers={this.state.customers} inputName="customerName" />
                      </div>
                      <div className="label">
