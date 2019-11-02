@@ -3,15 +3,24 @@ import axios from 'axios'
 export default class CustomersService {
 
    async getUsers() {
-      const response = await axios.get('https://jsonplaceholder.typicode.com/users/')
+      const response = await axios.get('http://localhost:3001/customers')
          .catch((error) => console.log(error))
-      return response
+      if (response && response.data) {
+         return response.data
+      }
+      console.log(`Could not get users from https://swapi.co/api/people/`)
+      return []
    }
 
    async getDebts() {
       const response = await axios.get('http://localhost:3001/debts')
          .catch((error) => console.log(error))
-      return response
+
+      if (response && response.data) {
+         return response.data
+      }
+      console.log(`Could not get debts from database`)
+      return []
    }
 
    async createDebt({ customerName, description, amount }) {
@@ -41,31 +50,6 @@ export default class CustomersService {
       })
          .catch((error) => console.log(error))
       return response
-   }
-
-   async getSwapiUsers() {
-
-      let nextPage = true;
-      let url = 'https://swapi.co/api/people'
-      let customers = []
-
-      while (nextPage) {
-
-         const response = await axios.get(url)
-            .catch((error) => console.log(error))
-
-         const recordsOnPage = response.data.results.map((element) => {
-            return element.name
-         })
-         customers = [...customers, ...recordsOnPage]
-
-         if (response.data.next) {
-            url = response.data.next
-         } else {
-            nextPage = false
-         }
-      }
-      return customers
    }
 }
 

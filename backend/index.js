@@ -1,4 +1,5 @@
 const express = require('express')
+const axios = require('axios')
 const app = express()
 const { getDebts, getCustomerDebts, createDebt, updateDebt, deleteDebt } = require('./database/queries')
 const bodyParser = require('body-parser')
@@ -10,8 +11,32 @@ app.use((req, res, next) => {
    next();
  });
 
-app.get('/customers', (req, res) => {
-   res.send('get swapi customers')
+app.get('/customers', async (req, res) => {
+   let nextPage = true;
+   let url = 'https://swapi.co/api/people'
+   let customers = []
+
+   while (nextPage) {
+
+      const response = await axios.get(url)
+         .catch((error) => console.log(error))
+
+      if (!response.data) {
+         return nextPage = false
+      }
+
+      const recordsOnPage = response.data.results.map((element) => {
+         return element.name
+      })
+      customers = [...customers, ...recordsOnPage]
+
+      if (response.data.next) {
+         url = response.data.next
+      } else {
+         nextPage = false
+      }
+   }
+   res.send(customers)
 })
 
 app.get('/debts', async (req, res) => {

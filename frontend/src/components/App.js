@@ -27,22 +27,16 @@ export default class DebtsPage extends Component {
    }
 
    async getCustomers() {
-      // const response = await this.service.getUsers()
-      // let names = []
-      // for (let i = 0; i < response.data.length; i++) {
-      //    names.push(response.data[i].name)
-      // }
-      const names = await this.service.getSwapiUsers()
+      const names = await this.service.getUsers()
       this.setState(() => ({ customers: names }))
    }
 
    async getDebts() {
       const response = await this.service.getDebts()
-      this.setState(() => ({ debts: response.data }))
+      this.setState(() => ({ debts: response }))
    }
 
    handleDeleteDebt = async (debtToRemove) => {
-      console.log(debtToRemove)
       await this.service.deleteDebt(debtToRemove)
       this.getDebts()
    }
@@ -105,7 +99,7 @@ export default class DebtsPage extends Component {
                <form onSubmit={this.handleNewDebt}>
                   <div className="input-bar">
                      <div className="label">
-                        Cliente <span>{this.state.customers.length === 0 ? <img src={loading} /> : ""}</span>
+                        Cliente <span>{this.state.customers.length === 0 ? <img src={loading} alt=" carregando..." /> : ""}</span>
                         <Dropdown customers={this.state.customers} inputName="customerName" />
                      </div>
                      <div className="label">
