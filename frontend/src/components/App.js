@@ -103,11 +103,11 @@ export default class DebtsPage extends Component {
                         <Dropdown customers={this.state.customers} inputName="customerName" />
                      </div>
                      <div className="label">
-                        Descrição
+                        <div>Descrição</div>
                         <input type="text" name="description" placeholder=""></input>
                      </div>
                      <div className="label">
-                        Valor
+                        <div>Valor</div>
                         <input type="number" name='value' placeholder="" step="any" required></input>
                      </div>
                      <button className='add-button' type="submit"><img name="add-debt" alt="Enviar" src={add}></img></button>

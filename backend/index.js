@@ -36,7 +36,7 @@ app.get('/customers', async (req, res) => {
          nextPage = false
       }
    }
-   res.send(customers)
+   res.send(customers.sort())
 })
 
 app.get('/debts', async (req, res) => {

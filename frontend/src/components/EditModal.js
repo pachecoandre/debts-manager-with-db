@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import Dropdown from './Dropdown'
 import './EditModal.css'
+import './App.css'
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -15,14 +16,14 @@ const EditModal = (props) => (
       <h3>Editar Produto</h3>
       <form onSubmit={props.handleSaveChanges}>
          <div className="label">
-            Cliente
+            <div>Cliente</div>
             <Dropdown
                customers={props.customers}
                inputName="customerName"
                defaultValue={props.debtUnderEdition ? props.debtUnderEdition.customer_name : ""} />
             </div>
             <div className="label">
-               Descrição
+               <div>Descrição</div>
             <input
                type="text"
                name='description'
@@ -31,7 +32,7 @@ const EditModal = (props) => (
             />
             </div>
             <div className="label">
-               Valor
+               <div>Valor</div>
             <input
                type="number"
                name='value'

@@ -27,7 +27,7 @@ const createDebt = ({ customerName, description, amount }) => {
          date: new Date()
       }).then(
          response => {
-            console.log(`Criado dívida:`, response)
+            console.log(`Debt created, id`, response)
             return `Debt created`
          },
          err => {
@@ -49,9 +49,9 @@ const updateDebt = ({ id, customerName, description, amount }) => {
       .then(
          response => {
             if (response === 0) {
-               return `Dívida não encontrada`
+               return `Debts not found`
             }
-            return `Dívida atualizada`
+            return `Debt updated`
          },
          err => {
             console.log(err)
@@ -67,9 +67,9 @@ const deleteDebt = ({ id }) => {
       .then(
          response => {
             if (response === 0) {
-               return `Dívida não encontrada`
+               return `Debt not found`
             }
-            return `Dívida deletada`
+            return `Debt deleted`
          },
          err => {
             console.log(err)

@@ -11,11 +11,15 @@
      width: 60%;
      align-items: baseline;
    }
+
+   .add-button {
+      margin-top: 12px;
+   }
  }
  
  .input-bar-container {
    margin: auto;
-   max-width: 800px;
+   max-width: 740px;
    padding: 20px;
  }
  
@@ -25,18 +29,21 @@
    border-radius: 4px;
    font-size: 15px;
    margin-top: 4px;
-   padding: 8px 10px;
-   width: 90%;
+   margin-bottom: 8px;
+   padding: 8px 8px;
+   width: 92%;
  }
  
  select {
+   height: 35px;
    min-width: 200px;
-   width: 95%;
  }
  
  .label {
+   display: table-row;
    margin-top: 10px;
-   margin-right: 10px;
+   margin-right: 12px;
+   margin-bottom: 10px;
    font-size: 12px;
    text-align: start;
  }
@@ -73,7 +80,6 @@
  }
  
  .add-button {
-   align-items: bottom;
    border: none;
    opacity: 0.7;
    background-color: transparent;
