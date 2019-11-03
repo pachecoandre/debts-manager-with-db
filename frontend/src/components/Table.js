@@ -31,7 +31,7 @@ const Table = (props) => {
                               </button>
                            </td>
                            <td className="desc-column">{item.description}</td>
-                           <td className="num-column">{item.amount}</td>
+                           <td className="num-column">{item.amount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
                            <td className="date-column">{moment().format('DD/MM/YYYY')}</td>
                            <td className="actions-column">
                               <button className='remove-button' onClick={(e) => {
