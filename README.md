@@ -1,3 +1,7 @@
+## Debts Manager
+It is a demo aplication to manage debts. The customer names are taken from [The Star Wars API](https://swapi.co/api/people)
+
+
 ## Instructions to Run Locally
 
 ### Clone the project
@@ -6,7 +10,7 @@
 ### Database Configuration
 Prerequisite: [MySQL Database](https://dev.mysql.com/downloads/mysql/)
 1. Make sure the database is running
-1. Run the SQL script in the file `backend/scripts/schema.sql`
+1. Run the SQL script from the file `backend/scripts/schema.sql`
 1. Change the database's user and password accordingly in the file `backend/database/connection.js`
 
 ### Backend
