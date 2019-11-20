@@ -4,7 +4,7 @@ const knex = require('knex')({
        host: '127.0.0.1',
        port: 3306,
        user: 'root',
-       password: 'linux',
+       password: 'root',
        database: 'debts-manager',
        timezone: '-03:00',
        dateStrings: true

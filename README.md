@@ -1,25 +1,26 @@
-## Instructions to run localhost
+## Instructions To Run Locally
 
 ### Clone the project
-Run the command:
-`git clone git@github.com:andrexlab/debts-manager-with-db.git`
+`git clone git@github.com:andrexlab/debts-manager-with-db.git`<br>
+<br>
 
 ### Database Configuration
-Prerequisites: [MySQL Database](https://dev.mysql.com/downloads/mysql/)
-Optional: [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+Prerequisite: [MySQL Database](https://dev.mysql.com/downloads/mysql/)
 1. Make sure the database is running
-1. In the Workbench go to --> File --> Run SQL Script...
-1. Open the backend/scripts/schema.sql file and run the script
+1. Run the `backend/scripts/schema.sql` file
+1. Change the database user and password in the `backend/database/connection.js` accordingly
+<br>
 
 ### Backend
-Prerequisites: [node.js](https://nodejs.org)
-In the backend folder, run:
-`npm install`
-`npm run start`
+Prerequisite: [node.js](https://nodejs.org)<br>
+In the backend folder, run:<br>
+`npm install`<br>
+`npm run start`<br>
+<br>
 
 ### Frontend
-Prerequisites: [yarn](https://yarnpkg.com)
-In the frontend folder, run:
-`yarn install`
-`yarn run start`
-Your browser should open automatically on http://localhost:3000/
+Prerequisite: [yarn](https://yarnpkg.com)<br>
+In the frontend folder, run:<br>
+`yarn install`<br>
+`yarn run start`<br>
+Your browser should open on `http://localhost:3000/` page.
