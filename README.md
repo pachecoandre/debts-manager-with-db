@@ -1,5 +1,5 @@
 ## Debts Manager
-It is a demo aplication to manage debts. The customer names are taken from [The Star Wars API](https://swapi.co/api/people)
+Simple MERN stack aplication exemple integrated to [The Star Wars API](https://swapi.co/api/people)
 
 
 ## Instructions to Run Locally
